@@ -1,76 +1,93 @@
-# ShipAny Template One
+# AI阿拉伯书法生成器
 
-Ship Any AI SaaS Startups in hours.
+本项目是一款基于人工智能的在线工具，旨在为用户提供便捷、高效且富有创意的阿拉伯书法作品生成体验。项目基于 [ShipAny AI SaaS Boilerplate](https://shipany.ai)进行二次开发，充分利用其提供的健全的基础设施（包括用户认证、支付系统等），使我们能够更专注于核心业务逻辑——AI驱动的书法艺术创作。
 
 ![preview](preview.png)
 
-## Quick Start
+## 项目特点
 
-1. Clone the repository
+- **基于 ShipAny 模板：** 快速启动开发，集成了登录、支付等SaaS基础功能。
+- **聚焦核心业务：** 主要开发精力投入在AI阿拉伯书法生成引擎、独特的风格模板以及优化的用户创作流程上。
+- **先进的AI技术：** 利用AI模型和提示词工程，生成具有高度艺术美感和个性化风格的书法作品。
+- **用户友好的体验：** 提供直观的界面和流畅的交互，让用户轻松创作。
 
-```bash
-git clone https://github.com/shipanyai/shipany-template-one.git
-```
+## 快速开始 (基于ShipAny)
 
-2. Install dependencies
+1.  **克隆仓库**
 
-```bash
-pnpm install
-```
+    ```bash
+    git clone [您的项目仓库URL]
+    ```
 
-3. Run the development server
+2.  **安装依赖**
 
-```bash
-pnpm dev
-```
+    ```bash
+    pnpm install
+    ```
 
-## Customize
+3.  **配置环境变量**
+    复制示例环境变量文件，并根据您的本地开发环境和第三方服务（如AI模型API、数据库、CDN、支付网关）进行配置：
+    ```bash
+    cp .env.example .env.local
+    ```
+    请确保填充 `.env.local` 文件中所有必要的变量。
 
-- Set your environment variables
+4.  **运行开发服务器**
 
-```bash
-cp .env.example .env.local
-```
+    ```bash
+    pnpm dev
+    ```
 
-- Set your theme in `app/theme.css`
+## 自定义与开发重点
 
-[shadcn-ui-theme-generator](https://zippystarter.com/tools/shadcn-ui-theme-generator)
+由于本项目基于 ShipAny 模板，大部分基础设置（如主题、国际化文件结构）可参考 ShipAny 的文档。本项目的主要自定义和开发内容包括：
 
-- Set your landing page content in `i18n/pages/landing`
+-   **核心AI书法生成逻辑：**
+    -   AI模型接口的集成与调用。
+    -   `StyleTemplate`（风格模板）的设计、实现与管理。
+    -   `GeneratedArtwork`（生成作品）的数据模型与业务逻辑。
+    -   文生图及图生图的核心算法与流程。
+-   **用户界面与交互：**
+    -   创作页面的定制化设计，以符合阿拉伯书法艺术的调性。
+    -   风格选择、参数调整、作品展示等核心交互流程的优化。
+-   **数据库模型扩展：**
+    -   根据 `功能与数据设计文档.md` 扩展和调整数据库表，以支持书法生成、风格管理、积分系统等业务需求。
+-   **内容管理：**
+    -   `i18n/pages/landing`：着陆页特定内容。
+    -   `i18n/messages`：全局国际化文本。
+-   **主题定制：**
+    -   `app/theme.css`：根据项目视觉风格调整主题。参考 [shadcn-ui-theme-generator](https://zippystarter.com/tools/shadcn-ui-theme-generator)。
 
-- Set your i18n messages in `i18n/messages`
+## 部署
 
-## Deploy
+部署方式可以参考 ShipAny 模板提供的指南，并根据本项目的特定配置（如环境变量、数据库连接等）进行调整。
 
-- Deploy to Vercel
+-   **Vercel 部署参考:**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fshipanyai%2Fshipany-template-one&project-name=my-shipany-project&repository-name=my-shipany-project&redirect-url=https%3A%2F%2Fshipany.ai&demo-title=ShipAny&demo-description=Ship%20Any%20AI%20Startup%20in%20hours%2C%20not%20days&demo-url=https%3A%2F%2Fshipany.ai&demo-image=https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FGgGSW3La8AAGJgU%3Fformat%3Djpg%26name%3Dlarge)
+    [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fshipanyai%2Fshipany-template-one&project-name=my-shipany-project&repository-name=my-shipany-project&redirect-url=https%3A%2F%2Fshipany.ai&demo-title=ShipAny&demo-description=Ship%20Any%20AI%20Startup%20in%20hours%2C%20not%20days&demo-url=https%3A%2F%2Fshipany.ai&demo-image=https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FGgGSW3La8AAGJgU%3Fformat%3Djpg%26name%3Dlarge)
 
-- Deploy to Cloudflare
+-   **Cloudflare 部署参考:**
 
-1. Customize your environment variables
+    1.  **自定义生产环境变量:**
+        ```bash
+        cp .env.example .env.production
+        cp wrangler.toml.example wrangler.toml
+        ```
+        编辑 `.env.production` 中的环境变量，并确保 `wrangler.toml` 文件中 `[vars]` 部分也正确配置。
+    2.  **部署命令:**
+        ```bash
+        npm run cf:deploy
+        ```
 
-```bash
-cp .env.example .env.production
-cp wrangler.toml.example wrangler.toml
-```
+## ShipAny 社区与资源 (模板基础)
 
-edit your environment variables in `.env.production`
+-   [ShipAny官网](https://shipany.ai)
+-   [ShipAny文档](https://docs.shipany.ai)
+-   [ShipAny Discord](https://discord.gg/HQNnrzjZQS)
 
-and put all the environment variables under `[vars]` in `wrangler.toml`
+## 许可证
 
-2. Deploy
+本项目基于 ShipAny 模板开发，其许可证信息请参考：
+-   [ShipAny AI SaaS Boilerplate License Agreement](LICENSE)
 
-```bash
-npm run cf:deploy
-```
-
-## Community
-
-- [ShipAny](https://shipany.ai)
-- [Documentation](https://docs.shipany.ai)
-- [Discord](https://discord.gg/HQNnrzjZQS)
-
-## License
-
-- [ShipAny AI SaaS Boilerplate License Agreement](LICENSE)
+请同时关注本项目自身的任何附加许可证条款（如果适用）。
