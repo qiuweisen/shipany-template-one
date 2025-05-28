@@ -11,6 +11,59 @@
 - **先进的AI技术：** 利用AI模型和提示词工程，生成具有高度艺术美感和个性化风格的书法作品。
 - **用户友好的体验：** 提供直观的界面和流畅的交互，让用户轻松创作。
 
+## 技术栈 (Technical Stack)
+
+本项目采用以下主要技术和库构建：
+
+-   **核心框架 (Core Framework):** [Next.js](https://nextjs.org/) (使用 App Router)
+-   **编程语言 (Programming Language):** [TypeScript](https://www.typescriptlang.org/)
+-   **UI 渲染 (UI Rendering):** [React](https://reactjs.org/)
+-   **样式方案 (Styling):** [Tailwind CSS](https://tailwindcss.com/)
+-   **UI 组件库 (UI Components):** [Shadcn UI](https://ui.shadcn.com/)
+-   **状态管理 (State Management):** React Context
+-   **用户认证 (Authentication):** [NextAuth.js](https://next-auth.js.org/)
+-   **国际化 (Internationalization):** [next-intl](https://next-intl-docs.vercel.app/)
+-   **支付集成 (Payment Integration):** [Stripe](https://stripe.com/)
+-   **消息通知 (Toast Notifications):** [Sonner](https://sonner.emilkowal.ski/)
+-   **AI SDK 集成 (AI SDK Integration):** [Vercel AI SDK](https://sdk.vercel.ai/) (包括 `@ai-sdk/openai`, `@ai-sdk/replicate` 等)
+-   **后端服务/数据库 (Backend/Database):** [Supabase](https://supabase.io/)
+-   **包管理器 (Package Manager):** [pnpm](https://pnpm.io/)
+
+## 项目文件结构 (Project File Structure)
+
+项目的目录结构组织如下，遵循标准的 Next.js 和 SaaS 应用实践：
+
+-   `app/`: Next.js App Router 核心目录，包含所有页面、布局和 API 路由。
+    -   `[locale]/`: 动态路由，用于支持国际化，`locale` 参数表示当前语言环境 (例如 `en`, `ar`)。
+        -   `(pages)/`: 包含各个页面的目录 (例如 `dashboard`, `generate`, `pricing`)。
+        -   `layout.tsx`: 该语言环境的根布局。
+        -   `global.css`: 全局样式 (如果 `theme.css` 不在此处)。
+    -   `api/`: 后端 API 路由 (例如 `checkout`, `generate-artwork`, `user-profile`)。
+    -   `theme.css`: 应用的全局主题和基础样式。
+-   `components/`: 可重用的 React 组件。
+    -   `blocks/`: 较大的页面构建块，通常用于特定页面如着陆页 (例如 `HeroSection`, `FeatureGrid`)。
+    -   `ui/`: 通用的、原子级的 UI 组件，许多基于或定制自 Shadcn UI (例如 `Button`, `Card`, `Input`)。
+-   `contexts/`: React Context API 实现，用于全局或特定功能的状态管理 (例如 `AppContext`, `AuthContext`)。
+-   `i18n/`: 国际化相关文件。
+    -   `messages/`: 包含不同语言的翻译消息文件 (例如 `en.json`, `ar.json`)。
+    -   `navigation.ts` (或类似文件): 可能用于定义国际化的导航链接。
+    -   `pages/landing/` (或按页面组织): 特定页面的翻译文本。
+-   `lib/`: 存放辅助函数、工具函数、常量和自定义逻辑的库代码 (例如 `utils.ts`, `stripe.ts`, `constants.ts`)。
+-   `models/`: 定义应用的数据模型、接口以及与数据库交互的逻辑 (例如 `User`, `Artwork`, `StyleTemplate`)。
+-   `services/`: 包含应用的业务逻辑层，处理复杂操作和与外部服务（如 AI API、支付网关）的交互。
+-   `public/`: 存放静态资源，如图片、字体、图标等，这些文件可以直接通过根 URL 访问。
+-   `types/`: TypeScript 类型定义文件，用于增强代码的类型安全。
+    -   `index.ts` (或按模块组织): 全局或模块化的类型定义。
+    -   `blocks/`: 针对 `components/blocks` 的类型。
+    -   `pages/`: 针对特定页面的数据或 props 类型。
+-   `auth/`: (若存在) NextAuth.js 的特定配置文件、回调处理或自定义页面。
+-   `.env.example`, `.env.local`: 环境变量配置文件。
+-   `middleware.ts`: Next.js 中间件，常用于处理国际化路由、认证保护等。
+-   `next.config.mjs`: Next.js 的主要配置文件。
+-   `package.json`: 定义项目依赖、脚本等。
+-   `tailwind.config.ts`: Tailwind CSS 配置文件。
+-   `tsconfig.json`: TypeScript 编译器配置文件。
+
 ## 快速开始 (基于ShipAny)
 
 1.  **克隆仓库**

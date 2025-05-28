@@ -6,7 +6,7 @@
   "homepage": "https://shipany.ai",
   "scripts": {
     "dev": "NODE_NO_WARNINGS=1 next dev",
-    "build": "next build",
+    "build": "npx next build",
     "start": "NODE_NO_WARNINGS=1 next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true pnpm build",
